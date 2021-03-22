@@ -1,0 +1,15 @@
+{
+  "name": "promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "promise.js",
+  "scripts": {
+    "test": "node testrunner.js",
+    "watch": "tsc ./promise.ts  --watch"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "promises-aplus-tests": ""
+  }
+}

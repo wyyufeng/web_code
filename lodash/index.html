@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流-防抖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: darkcyan;
+        }
+
+        .canvas {
+            padding: 20px;
+        }
+
+        canvas {
+            border: 1px solid black;
+            width: 1600px;
+            height: 600px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">
+    </div>
+    <div class="canvas">
+        <canvas width="1600" height="600" id="canvas">
+
+        </canvas>
+    </div>
+</body>
+<script src="./debounce.js"></script>
+<script src="./throttle.js"></script>
+<script>
+    var x = 0;
+    const canvas = document.getElementById('canvas')
+
+    const ctx = canvas.getContext('2d');
+    const debounceFn = debounce(function () {
+        ctx.fillStyle = 'blue';
+        console.log(x)
+        ctx.fillRect(x, 0, 4, 100)
+    }, 200, true)
+    const throttleFn = throttle(function () {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(x, 300, 4, 100)
+    }, 200)
+    function mouseMove() {
+        x += 2;
+        debounceFn()
+        throttleFn()
+    }
+    document.getElementById('box').addEventListener('mousemove', mouseMove)
+</script>
+
+</html>
