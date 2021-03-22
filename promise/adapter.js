@@ -1,4 +1,4 @@
-const MyPromise = require('./day5');
+const MyPromise = require('./day6');
 module.exports = {
   resolved: function (value) {
     return new MyPromise(function (resolve) {
