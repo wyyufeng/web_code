@@ -1,14 +1,22 @@
+const swap = require('../swap');
+
+/**
+ * 选择排序（选择最小的）
+ * 原地排序  不稳定排序
+ * 最坏时间复杂度 O(n^2)
+ * 最好事件复杂度 O(n^2)
+ * 平均事件复杂度 O(n^2)
+ * 空间复杂度 O(1)
+ */
 function selection_sort(arr) {
-  const len = arr.length;
-  let min;
-  for (let i = 0; i < len - 1; i++) {
-    min = i;
-    for (let j = i + 1; j < len; j++) {
-      if (arr[j] < arr[min]) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[min] > arr[j]) {
         min = j;
       }
     }
-    [arr[i], arr[min]] = [arr[min], arr[i]];
+    if (min !== i) swap(arr, i, min);
   }
   return arr;
 }
